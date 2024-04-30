@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" /> -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit&display=swap" rel="stylesheet">
+  <title>Frontend Mentor | Manage landing page</title>
+
+  <style>
+    :root {
+      --fontSize: 16px;
+  
+      --bright_Red: hsl(12, 88%, 59%);
+      --dark_Blue: hsl(228, 39%, 23%);
+      --transitionTime:0.3s;
+      --dark_Grayish_Blue: hsl(227, 12%, 61%);
+      --very_Dark_Blue: hsl(233, 12%, 13%);
+      --very_Pale_Red: hsl(13, 100%, 96%);
+      --very_Light_Gray: hsl(0, 0%, 98%);
+  
+    }
+    *{
+      padding:0px;
+      margin:0px;
+      font-size:  var(--fontSize);
+      font-family: 'Outfit', sans-serif;
+
+    }
+    .mainWrapper{
+      width:90%;
+      /* height:100%; */
+      padding-left:5%;
+      padding-right: 5%;
+    }
+    .navigation{
+      width:100%;
+      height:15vh;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      
+    }
+    .navigation img, .socialDiv img{
+      cursor: pointer;
+    }
+    .navigationLinks{
+      width:35%;
+      display: flex;
+      justify-content: space-between;
+          font-size: calc(var(--fontSize) + 2px);
+    }
+    .navigationLinks button{
+      background-color: transparent;
+      border:none;
+      transition: var(--transitionTime);
+    }
+    .navigationLinks button:hover{
+      color:var(--dark_Grayish_Blue);
+      cursor: pointer;
+    }
+    .getStartedButton{
+      color:var(--very_Light_Gray);
+      background-color: var(--bright_Red);
+      border:none;
+      border-radius: 30px;
+      padding:15px;
+      padding-left:35px;
+      padding-right: 35px;
+      transition: var(--transitionTime);
+    }
+    .getStartedButton:hover{
+      cursor: pointer;
+      filter:brightness(120%);
+      box-shadow: 0px 4px 20px -5px var(--bright_Red);
+    }
+    .landingPage, .landingInfo, .landingCarousel{
+      margin-top:5%;
+      height:60vh;
+      width:100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .landingInfo{
+      margin-top:15%;
+      margin-left:3%;
+    }
+    .landingPageText, .landingInfoText, .landingInfoCounter{
+      height:100%;
+      width:50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .landingPageText p:nth-of-type(1){
+      font-size: 4em;
+      width:80%;
+      font-weight: 800;
+      color:var(--dark_Blue)
+    }
+    .landingPageText p:nth-of-type(2){
+      width:60%;
+      line-height: 160%;
+      padding:2rem 0vh;
+    }
+    .simpleText{
+      color:var(--dark_Grayish_Blue);
+      font-size: calc(var(--fontSize) + 2px);
+    }
+    .landingPageText button{
+      margin-bottom: 5%;
+    }
+
+    .landingInfoText{
+      justify-content: flex-start;
+    }
+    .smallTitle{
+      color:var(--dark_Blue);
+      font-size: 2.5em;
+      font-weight: 800;
+    }
+    .landingInfoText p:nth-of-type(1){
+      width:70%;
+    }
+    .landingInfoText p:nth-of-type(2){
+      width:50%;
+      line-height: 150%;
+      margin-top:5%;
+    }
+    .landingInfoCounterElem{
+      display: flex;
+      flex-direction: row;
+    }
+    .counter{
+      margin-right: 5%;
+    }
+    .counterBullet{
+      background-color: var(--bright_Red);
+      color:var(--very_Light_Gray);
+      padding:5px;
+      padding-left:20px;
+      padding-right: 20px;
+      border-radius: 20px;
+      font-size: 800;
+    }
+    .counterElemText p:nth-of-type(1){
+      color:var(--dark_Blue);
+      font-weight: 800;
+      margin-bottom: 2%;
+    }
+    .counterElemText p:nth-of-type(2){
+      width:90%;
+    }
+    .landingCarousel{
+      flex-direction: column;
+      margin-top:20%;
+    }
+    .carouselArea{
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      width:100%;
+    }
+    .sliderElem{
+      margin-top:5%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding:2%;
+      margin-bottom:5%;
+      background-color: var(--very_Light_Gray);
+      width:20vw;
+    }
+    .sliderElem img{
+      margin-top:-20%;
+    
+    }
+    .sliderElem p:nth-of-type(1){
+      color:var(--dark_Blue);
+      text-transform: capitalize;
+      font-weight: 800;
+      text-align: center;
+      margin-top:5%;
+      margin-bottom: 5%;
+    }
+    .sliderElem p:nth-of-type(2){
+      text-align: center;
+    }
+
+    .moveCarouselElem{
+      transform: translateX(-100%);
+    }
+    .landingAd{
+      padding:3vh 0px;
+    }
+    .landingAd, .footer{
+      height:30vh;
+      width:100%;
+      background-color: var(--bright_Red);
+      margin-top:15%;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+    .landingAdText{
+      width:40%;
+    }
+    .landingAd p:nth-of-type(1){
+      color:var(--very_Light_Gray);
+      font-weight: 800;
+      font-size: 2.3em;
+    }
+    .landingAd button{
+      cursor: pointer;
+      background-color: var(--very_Light_Gray);
+      color:var(--bright_Red)
+    }
+    .footer{
+      margin-top:0px;
+      background-color: var(--very_Dark_Blue);
+      padding:3rem 0px;
+    }
+    .socialDiv{
+            height:fit-content;
+      background-color: white;
+    }
+    .socialDiv, .footerSearch{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-sizing: border-box;
+      padding:1rem;
+    }
+    .footerSearch{
+      height:80%;
+    }
+    .footerLinks{
+      display: flex;
+      justify-content: space-between;
+      width:30%;
+    }
+    .footerLinks div{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .footerLinks button{
+      background-color: transparent;
+      border:none;
+      color:var(--very_Light_Gray);
+      padding:0.5rem;
+
+    }
+    .footerLinks button:hover{
+      color:var(--bright_Red);
+      cursor: pointer;
+      transition: var(--transitionTime);
+    }
+    .footerSearch span:nth-of-type(1){
+      height:100%;
+    }
+    .footerSearch span:nth-of-type(2){
+      color:var(--dark_Grayish_Blue);
+      top:40%;
+      
+    }
+    .footerSearch input{
+      padding:15px;
+      border-radius: 30px;
+      outline: none;
+    }
+    #inputError{
+      color:var(--bright_Red);
+      display: none;
+      margin-top:5px;
+      margin-left:15px;
+  
+    }
+    
+    swiper-container {
+      width: 90%;
+      height: 100%;
+    }
+
+     .carousel{
+      width:80vw;
+      height:100vh;
+      margin-bottom: 5%;
+     }
+     swiper-slide{
+      width: 35vw !important;
+      margin:5rem 1rem;
+
+     }
+
+
+
+     @media (max-width: 1120px) {
+
+      .navigation button{
+        display: none;
+      }
+      .landingPage{
+        flex-direction: column-reverse;
+        margin-top:30%;
+        justify-content: center;
+      }
+      .landingPage img{
+        width:90%;
+        display: block;
+        margin:auto;
+      }
+      .landingPageText{
+        width:100%;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+      }
+      .landingPageText p{
+        width:100% !important;
+      }
+      .landingPageText p:nth-of-type(1){
+        font-size:2.3em;
+      }
+      .landingInfo{
+        flex-direction: column;
+        width:90%;
+        margin-top:40%;
+        height:90%;
+      }
+      .landingInfo > div, .landingInfoText p{
+        width:100% !important;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .landingInfoText{
+        margin-bottom: 10%;
+      }
+      .landingInfoCounterElem{
+      width:100%;
+      margin-top:5%;
+      }
+      .counter{
+        width:5%;
+        margin-right:0px;
+      }
+      .counterElemText{
+        width:100%;
+        margin-left:10%;
+      }
+      .counterElemText p:nth-of-type(1){
+        text-align: left;
+        background-color: var(--very_Pale_Red);
+        padding:5px;
+        font-size: calc(var(--fontSize) +2px);
+        margin-left:-5%;
+      }
+      .counterElemText p:nth-of-type(2){
+        width:unset;
+      }
+      .counterElemText .simpleText{
+        margin-left:-5%;
+        text-align: left;
+        margin-top:5%;
+      }
+      .landingAd{
+        height:100%;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding:5%;
+        width:90%;
+      }
+      .landingAdText{
+        width:100%;
+        padding:5%;
+      }
+      .footer{
+        padding:10rem 0rem;
+        flex-direction: column-reverse;
+      }
+      .footerSearch{
+        min-height:60%;
+      }
+      .footerSearch input{
+        width:100%;
+      }
+      .footerSearch span div{
+        width:100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .footerSearch span:last-of-type{
+        text-align: right;
+        width:100%;
+      }
+      .socialDiv{
+        width:20%;
+      }
+      .footer > div:not(.socialDiv){
+        width:80%;
+      }
+      .footerLinks{
+        padding:4rem 1rem;
+      }
+      .landingCarousel{
+        height:70vh;
+      }
+      .carouselArea{
+        height:100%;
+        
+      }
+
+
+@media (max-width:700px){
+  .counterElemText{
+    margin-left:10%;
+  }
+  .counterElemText p:nth-of-type(1){
+    text-align: center;
+  }
+  .landingInfoCounterElem{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .counter{
+    margin:0px;
+    margin-top:4rem;
+    margin-bottom: 1rem;
+    width:unset;
+  }
+  .socialDiv{
+    width:50%;
+  }
+  .landingAd p:nth-of-type(1){
+    font-size: calc(var(--fontSize) + 3px);
+  }
+       swiper-slide{
+      width: 70vw !important;
+      margin:5rem 1rem;
+
+     }
+}
+      
+      
+}
+    
+  </style>
+</head>
+<body>
+
+  <div class="mainWrapper">
+    <div class="navigation">
+
+      <img src="images\logo.svg">
+
+      <div class="navigationLinks">
+        <button>Pricing</button>
+        <button>Product</button>
+        <button>About us</button>
+        <button>Careers</button>
+        <button>Community</button>
+      </div>
+
+      <button class="getStartedButton">Get Started</button>
+    </div>
+
+    <div class="landingPage">
+      <div class="landingPageText">
+        <p>Bring everyone together to build better products.</p>
+        <p class="simpleText">Manage makes it simple for software teams to plan day-to-day
+        tasks while keeping the larger team goals in view.</p>
+        <button class="getStartedButton">Get Started</button>
+      </div>
+
+      <img src="images\illustration-intro.svg" class="landingPageImage">
+
+    </div>
+<div class="landingInfo">
+  <div class="landingInfoText">
+    <p class="smallTitle">What’s different about Manage?</p>
+    <p class="simpleText">Manage provides all the functionality your team needs, without
+      the complexity. Our software is tailor-made for modern digital
+      product teams.</p>
+  </div>
+
+  <div class="landingInfoCounter">
+    <div class="landingInfoCounterElem">
+      <div class="counter"><span class='counterBullet'>01</span></div>
+      <div class="counterElemText">
+        <p>Track company-wide progress</p>
+        <p class="simpleText">
+        See how your day-to-day tasks fit into the wider vision. Go from
+        tracking progress at the milestone level all the way done to the
+        smallest of details. Never lose sight of the bigger picture again.
+</p>
+      </div>
+    </div>
+
+    <div class="landingInfoCounterElem">
+      <div class="counter"><span class='counterBullet'>02</span></div>
+      <div class="counterElemText">
+        <p>Advanced built-in reports</p>
+        <p class="simpleText">
+        Set internal delivery estimates and track progress toward company
+        goals. Our customisable dashboard helps you build out the reports
+        you need to keep key stakeholders informed.</p>
+      </div>
+    </div>
+
+    <div class="landingInfoCounterElem">
+      <div class="counter"><span class='counterBullet'>03</span></div>
+      <div class="counterElemText">
+        <p>Everything you need in one place</p>
+        <p class="simpleText">
+        Stop jumping from one service to another to communicate, store files,
+        track tasks and share documents. Manage offers an all-in-one team
+        productivity solution.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="landingCarousel">
+
+  <p class="smallTitle">What they’ve said</p>
+  <div class="carousel">
+
+
+  <swiper-container class="carouselArea" slides-per-view="auto" 
+     loop='true'>
+    <swiper-slide id="ali" class="sliderElem">
+      <img src="images\avatar-ali.png">
+    <p>Ali Brave</p>
+    <p class="simpleText">“We have been able to cancel so many other subscriptions since using
+      Manage. There is no more cross-channel confusion and everyone is much
+      more focused.”</p>
+    </swiper-slide>
+    <swiper-slide id="anisha" class="sliderElem">
+            <img src="images\avatar-anisha.png">
+            <p>Anisha Li</p>
+            <p class="simpleText">“Manage has supercharged our team’s workflow. The ability to maintain
+              visibility on larger milestones at all times keeps everyone motivated.”
+            </p>
+    </swiper-slide>
+    <swiper-slide id="richard" class="sliderElem">
+            <img src="images\avatar-richard.png">
+            <p>richard Watts</p>
+            <p class="simpleText">“Manage allows us to provide structure and process. It keeps us organized
+              and focused. I can’t stop recommending them to everyone I talk to!”
+            </p>
+    </swiper-slide>
+    <swiper-slide  id="shanai" class="sliderElem">
+      <img src="images\avatar-shanai.png">
+    <p>Shanai Gough</p>
+    <p class="simpleText">
+      “Their software allows us to track, manage and collaborate on our projects
+      from anywhere. It keeps the whole team in-sync without being intrusive.”
+    </p></swiper-slide>
+
+  </swiper-container>
+  </div>
+  <button class="getStartedButton">Get Started</button>
+</div>
+
+  </div>
+  <div class="landingAd">
+    <div class="landingAdText">
+      <p>Simplify how your team works today.</p>
+    </div>
+    <div>
+      <button class="getStartedButton">Get Started</button>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="socialDiv">
+    <img src="images\logo.svg">
+    </div>
+
+    <div class="footerLinks">
+    <div>
+<button>Home</button>
+<button>Pricing</button>
+<button>Products</button>
+<button>About us</button>
+
+    </div>
+    <div>
+<button>Careers</button>
+<button>Community</button>
+<button>Privacy Policy</button>
+
+    </div>
+    </div>
+
+    <div class="footerSearch">
+      <span>
+        <div>
+        <input id="mailInput" placeholder="Updates in your inbox...">
+        <button class="getStartedButton" onclick="submitMail()">Go</button>
+        </div>
+        <div id="inputError">Please insert a valid mail.</div>
+            
+      </span>
+      <span>Copyright 2020. All Rights Reserved</span>
+    </div>
+
+  </div>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
+<script>
+
+function submitMail(){
+
+  console.log(mailInput.value.includes('@'))
+
+  if(!mailInput.value.includes('@')){
+    inputError.innerHTML = 'Please insert a valid mail.'
+    inputError.style.display='block';
+  }else{
+    inputError.innerHTML = 'Mail address submitted!'
+    inputError.style.display ='block';
+  }
+}
+
+
+</script>
+
+</body>
+</html>
