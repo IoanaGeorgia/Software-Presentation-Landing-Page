@@ -44,8 +44,10 @@
       align-items: center;
       
     }
-    .navigation img, .socialDiv img{
+    .navigation img, .socialDiv{
       cursor: pointer;
+      width:10%;
+      height:fit-content;
     }
     .navigationLinks{
       width:35%;
@@ -88,6 +90,10 @@
     .landingInfo{
       margin-top:15%;
       margin-left:3%;
+    }
+    .landingPageImage{
+      width:40%;
+      height:fit-content;
     }
     .landingPageText, .landingInfoText, .landingInfoCounter{
       height:100%;
@@ -158,13 +164,15 @@
     }
     .landingCarousel{
       flex-direction: column;
-      margin-top:20%;
+      margin-top:10%;
     }
     .carouselArea{
       display: flex;
       justify-content: space-evenly;
       align-items: center;
       width:100%;
+      overflow: hidden;
+      margin-top:5%;
     }
     .sliderElem{
       margin-top:5%;
@@ -174,13 +182,40 @@
       justify-content: center;
       padding:2%;
       margin-bottom:5%;
+      margin:2rem;
       background-color: var(--very_Light_Gray);
       width:20vw;
+      height:50vh;
     }
-    .sliderElem img{
-      margin-top:-20%;
-    
+        .landingCarousel{
+      height:100vh;
     }
+    swiper-container {
+      width: 90%;
+      height: 100%;
+    }
+
+     .carousel{
+      width:80vw;
+       height:120vh;
+      margin-bottom: 5%;
+     }
+     swiper-slide{
+      width: 33vw !important;
+      min-width: 33vw !important;
+
+
+     } 
+
+    .sliderElemImg{
+       margin-top:-10%;
+      height:25vh;
+      width:25vh;
+      display: grid;
+      justify-content: center;
+      align-items: center;
+    }
+
     .sliderElem p:nth-of-type(1){
       color:var(--dark_Blue);
       text-transform: capitalize;
@@ -282,22 +317,7 @@
       margin-left:15px;
   
     }
-    
-    swiper-container {
-      width: 90%;
-      height: 100%;
-    }
 
-     .carousel{
-      width:80vw;
-      height:100vh;
-      margin-bottom: 5%;
-     }
-     swiper-slide{
-      width: 35vw !important;
-      margin:5rem 1rem;
-
-     }
 
 
 
@@ -541,28 +561,31 @@
   <swiper-container class="carouselArea" slides-per-view="auto" 
      loop='true'>
     <swiper-slide id="ali" class="sliderElem">
-      <img src="images\avatar-ali.png">
+      <div class='sliderElemImg'><img src="images\avatar-ali.png"></div>
     <p>Ali Brave</p>
     <p class="simpleText">“We have been able to cancel so many other subscriptions since using
       Manage. There is no more cross-channel confusion and everyone is much
       more focused.”</p>
     </swiper-slide>
     <swiper-slide id="anisha" class="sliderElem">
-            <img src="images\avatar-anisha.png">
+            <div class='sliderElemImg'><img src="images\avatar-anisha.png"></div>
+
             <p>Anisha Li</p>
             <p class="simpleText">“Manage has supercharged our team’s workflow. The ability to maintain
               visibility on larger milestones at all times keeps everyone motivated.”
             </p>
     </swiper-slide>
     <swiper-slide id="richard" class="sliderElem">
-            <img src="images\avatar-richard.png">
+            <div class='sliderElemImg'>
+              <img src="images\avatar-richard.png">
+            </div>
             <p>richard Watts</p>
             <p class="simpleText">“Manage allows us to provide structure and process. It keeps us organized
               and focused. I can’t stop recommending them to everyone I talk to!”
             </p>
     </swiper-slide>
     <swiper-slide  id="shanai" class="sliderElem">
-      <img src="images\avatar-shanai.png">
+      <div class='sliderElemImg'><img src="images\avatar-shanai.png"></div>
     <p>Shanai Gough</p>
     <p class="simpleText">
       “Their software allows us to track, manage and collaborate on our projects
